@@ -16,6 +16,9 @@
   height: 70px;
   width: 218px;
 }
+.num {
+  color: black;
+}
 .keypad {
   display: flex;
   flex-flow: row nowrap;
