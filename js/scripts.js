@@ -11,20 +11,35 @@ $(document).ready(function(){
       case "7":
       case "8":
       case "9":
+        if ($(".main").text() == "0")
+          $(".main").text("");
         break;
       case "0":
+        if ($(".main").text() == "0")
+          $(".main").text("");
         break;
       case "+":
+        if ($(".main").text() == "")
+          return;
+        console.log(/[+×÷−]/.test($(".main").text()[$(".main").text().length]-1));
+        if (/[+−×÷]/.test($(".main").text()[$(".main").text().length]-1))
+          console.log("Ayos!");
         break;
-      case "-":
+      case "−":
+        if ($(".main").text() == "")
+          return;
         break;
       case "=":
+        if ($(".main").text() == "")
+          return;
         break;
-      case "xD7":
-        console.log("u00D7" + " success!");
+      case "×":
+        if ($(".main").text() == "")
+          return;
         break;
-      case "xF7":
-        console.log("u00F7" + " success!");
+      case "÷":
+        if ($(".main").text() == "")
+          return;
         break;
       case "AC":
         $(".main").text("");
