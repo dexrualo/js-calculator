@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $(".button").click(function(){
-    switch (this.text()) {
+    console.log($(this).text().charCodeAt(0));
+    switch ($(this).text()) {
       case "1":
       case "2":
       case "3":
@@ -10,13 +11,26 @@ $(document).ready(function(){
       case "7":
       case "8":
       case "9":
+        break;
       case "0":
+        break;
       case "+":
+        break;
       case "-":
+        break;
       case "=":
-      case "u00D7":
-      case "u00F7":
+        break;
+      case "xD7":
+        console.log("u00D7" + " success!");
+        break;
+      case "xF7":
+        console.log("u00F7" + " success!");
+        break;
+      case "AC":
+        $(".main").text("");
+        $(".sub").text("");
+        return;
     }
-    $(".screen").text($(".screen").text() + $(this).text());
+    $(".main").text($(".main").text() + $(this).text());
   });
 });
