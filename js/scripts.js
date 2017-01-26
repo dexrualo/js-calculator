@@ -1,3 +1,12 @@
+function lastIsDigit(){
+
+}
+function lastIsSymbol(str){
+   return /[+−×÷]/.test(str.slice(-1)[0])
+}
+function deleteLast(str, newVal){
+  return str.slice(0,str.length-1);
+}
 $(document).ready(function(){
   $(".button").click(function(){
     console.log($(this).text().charCodeAt(0));
@@ -21,9 +30,8 @@ $(document).ready(function(){
       case "+":
         if ($(".main").text() == "")
           return;
-        console.log(/[+×÷−]/.test($(".main").text()[$(".main").text().length]-1));
-        if (/[+−×÷]/.test($(".main").text()[$(".main").text().length]-1))
-          console.log("Ayos!");
+        if (lastIsSymbol($(".main").text()))
+          $(".main").text(deleteLast($(".main").text(),$(this).text()));
         break;
       case "−":
         if ($(".main").text() == "")
