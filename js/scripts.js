@@ -1,15 +1,16 @@
-function lastIsDigit(){
-
+function toJSEquation(equation) {
+  return equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
 }
 function lastIsSymbol(str){
-   return /[+−×÷]/.test(str.slice(-1)[0])
+   return /[+−×÷]/.test(str.slice(-1)[0]);
 }
 function deleteLast(str, newVal){
   return str.slice(0,str.length-1);
 }
 $(document).ready(function(){
   $(".button").click(function(){
-    console.log($(this).text().charCodeAt(0));
+    if (/=/.test($(".main").text()))
+      $(".main").text("");
     switch ($(this).text()) {
       case "1":
       case "2":
@@ -20,40 +21,37 @@ $(document).ready(function(){
       case "7":
       case "8":
       case "9":
-        if ($(".main").text() == "0")
-          $(".main").text("");
-        break;
       case "0":
         if ($(".main").text() == "0")
           $(".main").text("");
+        if (/[+−×÷]0/.test($(".main").text().slice(-2)))
+          $(".main").text($(".main").text().slice(0,-1));
+        $(".main").text($(".main").text() + $(this).text());
+        $(".sub").text(eval(toJSEquation($(".main").text())));
         break;
+      case "−":
+      case "×":
+      case "÷":
       case "+":
         if ($(".main").text() == "")
           return;
         if (lastIsSymbol($(".main").text()))
           $(".main").text(deleteLast($(".main").text(),$(this).text()));
-        break;
-      case "−":
-        if ($(".main").text() == "")
-          return;
+        $(".main").text($(".main").text() + $(this).text());
         break;
       case "=":
         if ($(".main").text() == "")
           return;
-        break;
-      case "×":
-        if ($(".main").text() == "")
-          return;
-        break;
-      case "÷":
-        if ($(".main").text() == "")
-          return;
+        if (lastIsSymbol($(".main").text()))
+          $(".main").text(deleteLast($(".main").text(),$(this).text()));
+        $(".sub").text(eval(toJSEquation($(".main").text())));
+        $(".main").text($(".main").text()+$(this).text()+eval(toJSEquation($(".main").text())));
+        return;
         break;
       case "AC":
         $(".main").text("");
         $(".sub").text("");
         return;
     }
-    $(".main").text($(".main").text() + $(this).text());
   });
 });
