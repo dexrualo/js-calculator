@@ -24,10 +24,15 @@ $(document).ready(function(){
       case "0":
         if ($(".main").text() == "0")
           $(".main").text("");
+        if ($(".main").text().length >= 13) {
+          $(".sub").text("Digit limit (13) exceeded.");
+          return;
+        }
         if (/[+−×÷]0/.test($(".main").text().slice(-2)))
           $(".main").text($(".main").text().slice(0,-1));
         $(".main").text($(".main").text() + $(this).text());
-        $(".sub").text(eval(toJSEquation($(".main").text())));
+        if (/[+−×÷]/.test($(".main").text()))
+          $(".sub").text(eval(toJSEquation($(".main").text())));
         break;
       case "−":
       case "×":
@@ -50,7 +55,7 @@ $(document).ready(function(){
         });
         $(".main").slideUp(function(){
           $(this).text(eval(toJSEquation($(".main").text())));
-          $(".sub").text("");
+          $(".sub").text("").css("font-size", "1em");
           $(this).show();
         });
         return;

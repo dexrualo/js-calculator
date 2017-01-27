@@ -1,4 +1,5 @@
 body {
+  background-color: darkgreen;
   font-family: 'Comfortaa', cursive;
 }
 .case {
@@ -23,14 +24,15 @@ body {
   width: 218px;
 }
 .main {
+  box-sizing: border-box;
   font-size: 1.5em;
   font-weight: bold;
-  height: 200px;
+  height: 40px;
   padding: 5px;
 }
 .sub {
-  font-weight: light;
-  height: 118px;
+  box-sizing: border-box;
+  height: 30px;
   padding: 5px;
 }
 .num {
