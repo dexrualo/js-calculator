@@ -1,3 +1,6 @@
+body {
+  font-family: 'Comfortaa', cursive;
+}
 .case {
   align-items: center;
   background-color: gray;
@@ -18,6 +21,17 @@
   height: 70px;
   text-align: right;
   width: 218px;
+}
+.main {
+  font-size: 1.5em;
+  font-weight: bold;
+  height: 200px;
+  padding: 5px;
+}
+.sub {
+  font-weight: light;
+  height: 118px;
+  padding: 5px;
 }
 .num {
   color: black;

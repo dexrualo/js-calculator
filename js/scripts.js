@@ -44,9 +44,23 @@ $(document).ready(function(){
           return;
         if (lastIsSymbol($(".main").text()))
           $(".main").text(deleteLast($(".main").text(),$(this).text()));
-        $(".sub").text(eval(toJSEquation($(".main").text())));
-        $(".main").text($(".main").text()+$(this).text()+eval(toJSEquation($(".main").text())));
+        $(".sub").text(eval(toJSEquation($(".main").text()))).animate({
+          fontSize: "1.5em",
+          fontWeight: "bold"
+        });
+        $(".main").slideUp(function(){
+          $(this).text(eval(toJSEquation($(".main").text())));
+          $(".sub").text("");
+          $(this).show();
+        });
         return;
+        break;
+      case ".":
+        if (/\./.test($(".main").text()))
+          return;
+        if ($(".main").text() == "")
+          $(".main").text("0");
+        $(".main").text($(".main").text() + $(this).text());
         break;
       case "AC":
         $(".main").text("");
