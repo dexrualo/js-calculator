@@ -7,6 +7,9 @@ function lastIsSymbol(str){
 function deleteLast(str, newVal){
   return str.slice(0,str.length-1);
 }
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
 $(document).ready(function(){
   $(".button").click(function(){
     if (/=/.test($(".main").text()))
@@ -25,14 +28,19 @@ $(document).ready(function(){
         if ($(".main").text() == "0")
           $(".main").text("");
         if ($(".main").text().length >= 13) {
-          $(".sub").text("Digit limit (13) exceeded.");
+          $(".sub").text("Digit limit reached");
           return;
         }
         if (/[+−×÷]0/.test($(".main").text().slice(-2)))
           $(".main").text($(".main").text().slice(0,-1));
         $(".main").text($(".main").text() + $(this).text());
-        if (/[+−×÷]/.test($(".main").text()))
-          $(".sub").text(eval(toJSEquation($(".main").text())));
+        if (/[+−×÷]/.test($(".main").text())) {
+          var ans = eval(toJSEquation($(".main").text()));
+          if (String(ans).length > 13) {
+            ans = round(ans,String(ans).slice(String(ans).indexOf(".") + 1).length - (String(ans).length - 13));
+          }
+          $(".sub").text(ans);
+        }
         break;
       case "−":
       case "×":
@@ -49,12 +57,16 @@ $(document).ready(function(){
           return;
         if (lastIsSymbol($(".main").text()))
           $(".main").text(deleteLast($(".main").text(),$(this).text()));
-        $(".sub").text(eval(toJSEquation($(".main").text()))).animate({
+        var ans = eval(toJSEquation($(".main").text()));
+        if (String(ans).length > 13) {
+          ans = round(ans,String(ans).slice(String(ans).indexOf(".") + 1).length - (String(ans).length - 13));
+        }
+        $(".sub").text(ans).animate({
           fontSize: "1.5em",
           fontWeight: "bold"
         });
         $(".main").slideUp(function(){
-          $(this).text(eval(toJSEquation($(".main").text())));
+          $(this).text(ans);
           $(".sub").text("").css("font-size", "1em");
           $(this).show();
         });

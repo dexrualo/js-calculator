@@ -1,21 +1,23 @@
 body {
   background-color: darkgreen;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Overpass Mono', monospace;
 }
 .case {
   align-items: center;
   background-color: gray;
   border-radius: 6px;
+  box-shadow: 0 10px 8px -4px black;
   display: flex;
   flex-flow: column nowrap;
   height: 430px;
   justify-content: space-around;
-  margin: 50px auto;
+  margin: 100px auto;
   width: 250px;
 }
 .screen {
   background-color: lightgreen;
   border-radius: 6px;
+  box-shadow: inset 0 0 10px black;
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
@@ -61,6 +63,7 @@ body {
 .button {
   background-color: black;
   border-radius: 6px;
+  box-shadow: 0 5px 4px -4px black;
   box-sizing: border-box;
   color: white;
   flex: 0 0 auto;
