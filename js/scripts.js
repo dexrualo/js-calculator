@@ -1,3 +1,5 @@
+var lastIsEqualSign = false;
+
 function toJSEquation(equation) {
   return equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
 }
@@ -25,6 +27,10 @@ $(document).ready(function(){
       case "8":
       case "9":
       case "0":
+        if (lastIsEqualSign == true) {
+          $(".main").text("");
+          lastIsEqualSign = false;
+        }
         if ($(".main").text() == "0")
           $(".main").text("");
         if ($(".main").text().length >= 13) {
@@ -51,6 +57,7 @@ $(document).ready(function(){
         if (lastIsSymbol($(".main").text()))
           $(".main").text(deleteLast($(".main").text(),$(this).text()));
         $(".main").text($(".main").text() + $(this).text());
+        lastIsEqualSign = false;
         break;
       case "=":
         if ($(".main").text() == "")
@@ -70,6 +77,7 @@ $(document).ready(function(){
           $(".sub").text("").css("font-size", "1em");
           $(this).show();
         });
+        lastIsEqualSign = true;
         return;
         break;
       case ".":
