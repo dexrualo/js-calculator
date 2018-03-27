@@ -1,5 +1,4 @@
 var lastIsEqualSign = false;
-var hasDecimalPoint =false;
 var main = $('.main');
 var sub = $('.sub');
 
@@ -61,6 +60,9 @@ $(document).ready(function(){
                 return;
             if (lastIsSymbol(main.text()))
                 main.text(deleteLast(main.text(),clicked.text()));
+            if (/\.$/.test(main.text())) {
+                main.text(main.text().slice(0,-1));
+            }
             main.text(main.text() + clicked.text());
             lastIsEqualSign = false;
             break;
@@ -85,7 +87,10 @@ $(document).ready(function(){
             lastIsEqualSign = true;
             return;
         case '.':
-            if (/\./.test(main.text()))
+            if (/[+−×÷]$/.test(main.text())) {
+                main.text(main.text() + '0');
+            }
+            if (/\d+\.\d*$/.test(main.text()))
                 return;
             if (main.text() == '')
                 main.text('0');
