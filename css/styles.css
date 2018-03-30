@@ -2,17 +2,22 @@ body {
   background-color: darkgreen;
   font-family: 'Overpass Mono', monospace;
 }
-h1, h4 {
+
+h1,
+h4 {
   color: whitesmoke;
   text-align: center;
 }
+
 h1 {
   margin-top: 25px;
 }
+
 a {
   color: yellowgreen;
   text-decoration: none;
 }
+
 .case {
   align-items: center;
   background-color: gray;
@@ -25,6 +30,7 @@ a {
   margin: 50px auto;
   width: 250px;
 }
+
 .screen {
   background-color: lightgreen;
   border-radius: 6px;
@@ -36,6 +42,7 @@ a {
   text-align: right;
   width: 218px;
 }
+
 .main {
   box-sizing: border-box;
   font-size: 1.5em;
@@ -43,20 +50,24 @@ a {
   height: 40px;
   padding: 5px;
 }
+
 .sub {
   box-sizing: border-box;
   height: 30px;
   padding: 5px;
 }
+
 .num {
   color: black;
 }
+
 .keypad {
   display: flex;
   flex-flow: row nowrap;
   height: 280px;
   width: 224px;
 }
+
 .col-1 {
   align-items: center;
   display: flex;
@@ -64,6 +75,7 @@ a {
   flex-flow: row wrap;
   justify-content: space-around;
 }
+
 .col-2 {
   align-items: center;
   display: flex;
@@ -71,6 +83,7 @@ a {
   flex-flow: column nowrap;
   justify-content: space-around;
 }
+
 .button {
   background-color: black;
   border-radius: 6px;
@@ -83,16 +96,20 @@ a {
   padding: 5px 7px;
   width: 50px;
 }
+
 .button:active {
   background-color: gray;
 }
+
 .plus,
 .equals {
   height: 106px;
 }
+
 .zero {
   width: 106px;
 }
+
 .clear {
   background-color: darkred;
 }
